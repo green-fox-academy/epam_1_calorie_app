@@ -7,6 +7,7 @@
     "jshint": "^2.9.1"
   },
   "devDependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-jshint": "^2.0.0",
     "jasmine": "^2.4.1",

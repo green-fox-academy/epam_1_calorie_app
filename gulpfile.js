@@ -8,13 +8,13 @@ var batch = require('gulp-batch');
 
 gulp.task('default', function() {
   console.log('Watching for file changes...');
-  watch('./lib/*.js', batch(function (events, done) {
+  watch('./public/js/*.js', batch(function (events, done) {
       gulp.start('lint', done);
   }));
 });
 
 gulp.task('lint', function() {
-  return gulp.src('./lib/*.js')
+  return gulp.src('./public/js/*.js')
     .pipe(jshint())
   	.pipe(jshint.reporter(stylish))
   	.pipe(jshint.reporter('fail'))

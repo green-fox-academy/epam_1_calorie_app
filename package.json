@@ -4,10 +4,9 @@
   "description": "",
   "main": "test.js",
   "dependencies": {
-    "jshint": "^2.9.1"
+    "express": "^4.13.4"
   },
   "devDependencies": {
-    "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
     "gulp-jshint": "^2.0.0",
@@ -29,5 +28,7 @@
     "url": "https://github.com/greenfox-academy/epam_1_calorie_app/issues"
   },
   "homepage": "https://github.com/greenfox-academy/epam_1_calorie_app#readme",
-  "engines": {"node": "4.0.0"}
+  "engines": {
+    "node": "4.0.0"
+  }
 }

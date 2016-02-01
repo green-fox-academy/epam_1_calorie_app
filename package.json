@@ -1,8 +1,8 @@
 {
-  "name": "cal_app",
+  "name": "epam_1_calorie_app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "test.js",
   "dependencies": {
     "jshint": "^2.9.1"
   },
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/greenfox-academy/epam_1_calory_app.git"
+    "url": "git+https://github.com/greenfox-academy/epam_1_calorie_app.git"
   },
-  "author": "molakos",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/greenfox-academy/epam_1_calory_app/issues"
+    "url": "https://github.com/greenfox-academy/epam_1_calorie_app/issues"
   },
-  "homepage": "https://github.com/greenfox-academy/epam_1_calory_app#readme"
+  "homepage": "https://github.com/greenfox-academy/epam_1_calorie_app#readme"
 }

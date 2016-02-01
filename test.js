@@ -1,3 +1,3 @@
 'use strict';
 
-console.log('codeship test');
+console.log('Codeship test');

@@ -2,7 +2,15 @@
   "name": "epam_1_calorie_app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "test.js",
+  "dependencies": {
+    "jshint": "^2.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.9.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,10 +23,5 @@
   "bugs": {
     "url": "https://github.com/greenfox-academy/epam_1_calorie_app/issues"
   },
-  "homepage": "https://github.com/greenfox-academy/epam_1_calorie_app#readme",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jshint": "^2.0.0",
-    "jshint": "^2.9.1"
-  }
+  "homepage": "https://github.com/greenfox-academy/epam_1_calorie_app#readme"
 }

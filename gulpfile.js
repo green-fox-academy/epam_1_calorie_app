@@ -2,6 +2,7 @@
 
 var jshint = require('gulp-jshint');
 var gulp   = require('gulp');
+
 gulp.task('default', function() {
   console.log('hello gulp');
 });
@@ -11,3 +12,4 @@ gulp.task('lint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('YOUR_REPORTER_HERE'));
 });
+

@@ -1,1 +1,1 @@
-# epam_1_calory_app
+# epam_1_calorie_app

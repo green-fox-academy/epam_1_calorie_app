@@ -1,7 +1,7 @@
 'use strict';
 
 function sayHelloWorld() {
-  return 'Hello World Fails';
+  return 'Hello World';
 }
 
 module.exports = sayHelloWorld;

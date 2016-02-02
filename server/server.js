@@ -21,7 +21,7 @@ app.get('/meals', function (request, response) {
 });
 
 app.post('/meals', function(request, response) {
-	console.log(request.body);
+	console.log(request);
 	// item.addItem(request.body, function(err, result) {
 	// 	if (err)
 	// 	{ console.error(err); response.send('Error ' + err); }

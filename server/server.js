@@ -2,11 +2,9 @@
 
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-app.use(bodyParser);
 
 var items = [
 	{name: 'csoki', calorie: '420'},

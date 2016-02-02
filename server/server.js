@@ -21,10 +21,11 @@ app.get('/meals', function (request, response) {
 });
 
 app.post('/meals', function(request, response) {
-	item.addItem(request.body, function(err, result) {
-		if (err)
-		{ console.error(err); response.send('Error ' + err); }
-		else
-		{ response.json(result); }
-	});
+	console.log(request.body);
+	// item.addItem(request.body, function(err, result) {
+	// 	if (err)
+	// 	{ console.error(err); response.send('Error ' + err); }
+	// 	else
+	// 	{ response.json(result); }
+	// });
 });

@@ -14,7 +14,7 @@ var items = [
 ];
 
 app.get('/meals', function(req, res) {
-	res.json(items);
+	res.send(res.json(items));
 });
 
 app.listen(port, function() {

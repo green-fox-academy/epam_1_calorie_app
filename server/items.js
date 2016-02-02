@@ -29,7 +29,7 @@ function addMeal(attributes) {
 
 function allMeals() {
   var values = [];
-  for (id in items) {
+  for (var id in items) {
     values.push(items[id]);
   }
   return values;

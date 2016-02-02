@@ -3,11 +3,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var item = require('./items.js');
+var path = require('path');
 
 var port = process.env.PORT || 3000;
 var app = express();
 
-app.use(express.static('../public'));
+var route = path.join(__dirname, '..', 'public');
+console.log(__dirname);
+console.log(route);
+app.use(express.static(route));
+
 app.use(bodyParser.json());
 
 app.listen(port, function() {

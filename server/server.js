@@ -1,14 +1,17 @@
 'use strict';
 
 var express = require('express');
-var app = express();
-var port = process.env.PORT || 3000;
+var bodyParser = require('body-parser');
 var item = require('./items.js');
 
-app.use(express.static('public'));
+var port = process.env.PORT || 3000;
+var app = express();
+
+app.use(express.static('../public'));
+app.use(bodyParser.json());
 
 app.listen(port, function() {
-	console.log('Listening on port 3000...');
+	console.log('Listening on port ' + port + '...');
 });
 
 app.get('/meals', function (request, response) {
@@ -21,11 +24,10 @@ app.get('/meals', function (request, response) {
 });
 
 app.post('/meals', function(request, response) {
-	console.log(request);
-	// item.addItem(request.body, function(err, result) {
-	// 	if (err)
-	// 	{ console.error(err); response.send('Error ' + err); }
-	// 	else
-	// 	{ response.json(result); }
-	// });
+	item.addItem(request.body, function(err, result) {
+		if (err)
+		{ console.error(err); response.send('Error ' + err); }
+		else
+		{ response.json(result); }
+	});
 });

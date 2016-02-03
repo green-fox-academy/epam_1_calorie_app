@@ -1,7 +1,7 @@
 'use strict';
 
 var pg = require('pg');
-var databaseUrl = process.env.DATABASE_URL || 'postgres://postgres:sqltest@localhost/postgres';
+var databaseUrl = process.env.DATABASE_URL || 'postgres://postgres:epam1@localhost/postgres';
 
 function getAll(callback) {
   sendQuery({

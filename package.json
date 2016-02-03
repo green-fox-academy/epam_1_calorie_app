@@ -4,9 +4,10 @@
   "description": "",
   "main": "test.js",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "pg": "4.4.4",
-    "body-parser": "^1.14.2"
+    "path": "^0.12.7",
+    "pg": "4.4.4"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

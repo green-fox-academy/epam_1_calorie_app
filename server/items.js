@@ -12,8 +12,15 @@ function getAll(callback) {
 function addItem(params, callback) {
   sendQuery(SQL`
     INSERT INTO meals (name, calories, date)
-    VALUES (${params.name}, ${params.calories}, ${params.date})`,
+    VALUES (${params.name}, ${params.calories}, ${params.date})
+    RETURNING id`,
     callback);
+}
+
+function getItem(id, callback) {
+  sendQuery(SQL`
+    SELECT id, name, calories, date FROM meals
+    WHERE id=${id}`, callback);
 }
 
 function sendQuery(query, callback) {
@@ -27,5 +34,6 @@ function sendQuery(query, callback) {
 
 module.exports = {
   getAll : getAll,
-  addItem: addItem
+  addItem: addItem,
+  getItem: getItem
 };

@@ -2,10 +2,11 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var config = require('./config.js');
 var item = require('./items.js');
 var path = require('path');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || config.defaultPort;
 var app = express();
 
 var route = path.join(__dirname, '..', 'public');
@@ -18,6 +19,7 @@ app.listen(port, function() {
 
 app.get('/meals', getAll);
 app.post('/meals', addItem);
+app.delete('/meals/:id', deleteItem);
 
 function getAll(request, response) {
 	item.getAll(function (err, result) {
@@ -27,6 +29,12 @@ function getAll(request, response) {
 
 function addItem(request, response) {
 	item.addItem(request.body, function(err, result) {
+		handleResponse(err, result, response);
+	});
+}
+
+function deleteItem(request, response) {
+	item.deleteItem(request.params.id, function(err, result) {
 		handleResponse(err, result, response);
 	});
 }

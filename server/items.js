@@ -14,7 +14,10 @@ function addItem(params, callback) {
     INSERT INTO meals (name, calories, date)
     VALUES (${params.name}, ${params.calories}, ${params.date})
     RETURNING id`,
-    callback);
+    function(err, result) {
+      var id = result.rows[0].id;
+      getItem(id, callback);
+    });
 }
 
 function getItem(id, callback) {
@@ -24,16 +27,19 @@ function getItem(id, callback) {
 }
 
 function sendQuery(query, callback) {
-  pg.connect(databaseUrl, function(err, client, done) {
-    client.query(query, function (err, result) {
-      done();
-      callback(err, result);
-    });
+  pg.connect(databaseUrl, function(connectError, client, done) {
+    if (connectError) {
+      callback(connectError);
+    } else {
+      client.query(query, function (queryError, result) {
+        done();
+        callback(queryError, result);
+      });
+    }
   });
 }
 
 module.exports = {
   getAll : getAll,
-  addItem: addItem,
-  getItem: getItem
+  addItem: addItem
 };

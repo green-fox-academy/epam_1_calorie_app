@@ -10,35 +10,32 @@ var app = express();
 
 var route = path.join(__dirname, '..', 'public');
 app.use(express.static(route));
-
 app.use(bodyParser.json());
 
 app.listen(port, function() {
 	console.log('Listening on port ' + port + '...');
 });
 
-app.get('/meals', function (request, response) {
-	item.getAll(function (err, result) {
-		if (err) {
-			console.error(err); response.send('Error ' + err);
-		}	else {
-			response.json(result.rows);
-		}
-	});
-});
+app.get('/meals', getAll);
+app.post('/meals', addItem);
 
-app.post('/meals', function(request, response) {
-	item.addItem(request.body, function(err, result) {
-		if (err) {
-			console.error(err); response.send('Error ' + err);
-		}	else {
-			item.getItem(result.rows[0].id, function(err, result) {
-				if (err) {
-					console.error(err); response.send('Error ' + err);
-				} else {
-					response.json(result);
-				}
-			});
-		}
+function getAll(request, response) {
+	item.getAll(function (err, result) {
+    handleResponse(err, result, response);
 	});
-});
+}
+
+function addItem(request, response) {
+	item.addItem(request.body, function(err, result) {
+		handleResponse(err, result, response);
+	});
+}
+
+function handleResponse(err, result, response) {
+	if (err) {
+		console.error(err);
+		response.send('Error ' + err);
+	}	else {
+		response.json(result.rows);
+	}
+}

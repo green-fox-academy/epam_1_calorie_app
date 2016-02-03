@@ -1,9 +1,10 @@
 'use strict';
 
 var pg = require('pg');
+var config = require('./config.js');
 var SQL = require('sql-template-strings');
 
-var databaseUrl = process.env.DATABASE_URL || 'postgres://postgres:epam1@localhost/postgres';
+var databaseUrl = process.env.DATABASE_URL || config.databaseUrl;
 
 function getAll(callback) {
   sendQuery('SELECT id, name, calories, date FROM meals', callback);

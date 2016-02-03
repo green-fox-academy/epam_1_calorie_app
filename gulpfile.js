@@ -19,7 +19,7 @@ gulp.task('lint', function() {
   return gulp.src('./public/js/*.js')
     .pipe(jshint())
   	.pipe(jshint.reporter(stylish))
-  	.pipe(jshint.reporter('fail'))
+  	.pipe(jshint.reporter('fail'));
 });
 
 

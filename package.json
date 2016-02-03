@@ -6,8 +6,11 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
+    "i": "^0.3.4",
+    "npm": "^3.6.0",
     "path": "^0.12.7",
-    "pg": "4.4.4"
+    "pg": "4.4.4",
+    "sql-template-strings": "^1.1.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

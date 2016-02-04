@@ -3,13 +3,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config.js');
-var Meals = require('./items.js');
-var meals = new Meals();
 var path = require('path');
+
+var Meals = require('./items.js');
+var Connection = require('./connection.js');
+var connection = new Connection();
+var meals = new Meals(connection);
 
 var port = process.env.PORT || config.defaultPort;
 var app = express();
-
 
 var route = path.join(__dirname, '..', 'public');
 app.use(express.static(route));

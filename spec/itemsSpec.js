@@ -3,15 +3,18 @@
 var SQL = require('sql-template-strings');
 
 describe('Meals', function() {
+    var connection = {};
+    var Meals = require('../server/items');
+    var meals = new Meals(connection);
+
+  beforeEach(function() {
+    connection.sendQuery = function (query, callback) {
+      return callback(null, [{}]);
+    };
+  });
 
   describe('getAll()', function() {
     it('tracks all the arguments of its calls', function() {
-      var connection = {};
-      connection.sendQuery = function (query, callback) {
-        return callback(null, [{}]);
-      };
-      var Meals = require('../server/items');
-      var meals = new Meals(connection);
       spyOn(connection, 'sendQuery');
       meals.getAll('callback');
       expect(connection.sendQuery).toHaveBeenCalledWith('SELECT id, name, calories, date FROM meals', 'callback');
@@ -20,12 +23,6 @@ describe('Meals', function() {
 
   describe('addItem()', function() {
     it('tracks all the arguments of its calls', function() {
-      var connection = {};
-      connection.sendQuery = function (query, callback) {
-        return callback(null, [{}]);
-      };
-      var Meals = require('../server/items');
-      var meals = new Meals(connection);
       var params = {name: 'name', calories: 'calories', date: 'date'};
       spyOn(connection, 'sendQuery');
       meals.addItem(params,'callback');
@@ -39,12 +36,6 @@ describe('Meals', function() {
 
   describe('deletItem()', function() {
     it('tracks all the arguments of its calls', function() {
-      var connection = {};
-      connection.sendQuery = function (query, callback) {
-        return callback(null, [{}]);
-      };
-      var Meals = require('../server/items');
-      var meals = new Meals(connection);
       var id = '';
       spyOn(connection, 'sendQuery');
       meals.deleteItem(id, 'callback');

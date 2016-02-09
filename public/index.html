@@ -4,8 +4,38 @@
     <meta charset="utf-8">
     <link rel="stylesheet" charset="utf-8">
     <title>Calorie Counter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   </head>
-  <body>
+  <body ng-app="CalorieApp">
     <h1>Calorie Counter</h1>
+
+
+	<div ng-controller="FormCtrl">
+    <form ng-submit="addMeal()">
+      <p><input type="text" ng-model="meal"></p>
+  		<p>{{meal}}</p>
+      <p><input type="number" ng-model="calorie.value"></p>
+      <p>{{calorie.value}}</p>
+      <p><input type="date" ng-model="date.value"></p>
+      <p>{{date.value | date : format : timezone}}</p>
+      <input type="submit" value="add">
+    </form>
+	</div>
+
+  <div ng-controller="ListCtrl">
+    <table border="1" style="width:100%">
+     <tr>
+       <td>Name</td>
+       <td>Calorie</td>
+       <td>Date</td>
+     </tr>
+     <tr ng-repeat="meal in getMeals()">
+       <td>{{meal.name}}</td>
+       <td>{{meal.calories}}</td>
+       <td>{{meal.date | date : format : timezone}}</td>
+     </tr>
+    </table>
+  </div>
+  <script src="./js/script.js"></script>
   </body>
 </html>

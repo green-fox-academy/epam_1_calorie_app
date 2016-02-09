@@ -28,11 +28,13 @@
        <td>Name</td>
        <td>Calorie</td>
        <td>Date</td>
+       <td></td>
      </tr>
      <tr ng-repeat="meal in getMeals()">
        <td>{{meal.name}}</td>
        <td>{{meal.calories}}</td>
        <td>{{meal.date | date : format : timezone}}</td>
+       <td><button type="button" ng-click="removeMeal(meal)">Delete</button></td>
      </tr>
     </table>
   </div>

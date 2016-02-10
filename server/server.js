@@ -1,14 +1,12 @@
 'use strict';
 
-function CreateServer() {
+function createServer(connection) {
 	var express = require('express');
 	var bodyParser = require('body-parser');
 
-	var Connection = require('./connection.js');
 	var Queries = require('./queries.js');
 	var Service = require('./service.js');
 
-	var connection = new Connection();
 	var queries = new Queries(connection);
 	var service = new Service(queries);
 
@@ -26,4 +24,4 @@ function CreateServer() {
 	return app;
 }
 
-module.exports = CreateServer;
+module.exports = createServer;

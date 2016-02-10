@@ -4,12 +4,12 @@ var app = angular.module('CalorieApp', []);
 
 app.factory('meals', function($http) {
   return {
-    url: 'http://calorie-counter-epam1.herokuapp.com/meals',
+    url: window.location.href + 'meals/',
     list: [],
     getAll: function() {
-        var _this = this;
-        $http.get(_this.url).then(function (response) {
-          _this.list = response.data;
+      var _this = this;
+      $http.get(_this.url).then(function (response) {
+        _this.list = response.data;
       });
     },
     addItem: function(newMeal) {
@@ -20,7 +20,7 @@ app.factory('meals', function($http) {
     },
     deleteItem: function(item) {
       var _this = this;
-      var url = _this.url + '/' + item.id;
+      var url = _this.url + item.id;
       $http.delete(url, {id: item.id}).success(function() {
         var index = _this.list.indexOf(item);
         _this.list.splice(index, 1);
@@ -29,7 +29,7 @@ app.factory('meals', function($http) {
   };
 });
 
-app.controller('FormCtrl', function($scope, $http, meals) {
+app.controller('AddCtrl', function($scope, meals) {
   $scope.meal = 'add meal';
   $scope.calorie = {value : 0} ;
   $scope.date = {
@@ -46,7 +46,7 @@ app.controller('FormCtrl', function($scope, $http, meals) {
   };
 });
 
-app.controller('ListCtrl', function($scope, $http, meals) {
+app.controller('ListCtrl', function($scope, meals) {
   $scope.getMeals = function() {
     return meals.list;
   };

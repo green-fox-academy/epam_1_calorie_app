@@ -1,53 +1,27 @@
 'use strict';
 
-var express = require('express');
-var bodyParser = require('body-parser');
-var config = require('./config.js');
-var path = require('path');
+function createServer(connection) {
+	var express = require('express');
+	var bodyParser = require('body-parser');
 
-var Meals = require('./items.js');
-var Connection = require('./connection.js');
-var connection = new Connection();
-var meals = new Meals(connection);
+	var Queries = require('./queries.js');
+	var Service = require('./service.js');
 
-var port = process.env.PORT || config.defaultPort;
-var app = express();
+	var queries = new Queries(connection);
+	var service = new Service(queries);
 
-var route = path.join(__dirname, '..', 'public');
-app.use(express.static(route));
-app.use(bodyParser.json());
+	var app = express();
+	app.use(bodyParser.json());
 
-app.listen(port, function() {
-	console.log('Listening on port ' + port + '...');
-});
+	var path = require('path');
+	var route = path.join(__dirname, '..', 'public');
+	app.use(express.static(route));
 
-app.get('/meals', getAll);
-app.post('/meals', addItem);
-app.delete('/meals/:id', deleteItem);
+	app.get('/meals', service.getAll);
+	app.post('/meals', service.addItem);
+	app.delete('/meals/:id', service.deleteItem);
 
-function getAll(request, response) {
-	meals.getAll(function (err, result) {
-    handleResponse(err, result, response);
-	});
+	return app;
 }
 
-function addItem(request, response) {
-	meals.addItem(request.body, function(err, result) {
-		handleResponse(err, result, response);
-	});
-}
-
-function deleteItem(request, response) {
-	meals.deleteItem(request.params.id, function(err, result) {
-		handleResponse(err, result, response);
-	});
-}
-
-function handleResponse(err, result, response) {
-	if (err) {
-		console.error(err);
-		response.send('Error ' + err);
-	}	else {
-		response.json(result.rows);
-	}
-}
+module.exports = createServer;

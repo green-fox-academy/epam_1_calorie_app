@@ -4,7 +4,7 @@ var app = angular.module('CalorieApp', []);
 
 app.factory('meals', function($http) {
   return {
-    url: 'https://calorie-counter-epam1.herokuapp.com/meals/',
+    url: window.location.href + 'meals/',
     list: [],
     getAll: function() {
       var _this = this;

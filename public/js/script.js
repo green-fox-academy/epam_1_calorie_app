@@ -4,7 +4,7 @@ var app = angular.module('CalorieApp', []);
 
 app.factory('meals', function($http, $location) {
   return {
-    url: $location.absUrl() + '/meals',
+    url: $location.absUrl() + 'meals/',
     list: [],
     getAll: function() {
       var _this = this;
@@ -21,7 +21,7 @@ app.factory('meals', function($http, $location) {
     deleteItem: function(item) {
       var _this = this;
       var url = _this.url + item.id;
-      $http.delete(url, {id: item.id}).success(function() {
+      $http.delete(url).success(function() {
         var index = _this.list.indexOf(item);
         _this.list.splice(index, 1);
       });

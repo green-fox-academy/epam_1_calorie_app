@@ -2,9 +2,9 @@
 
 var app = angular.module('CalorieApp', []);
 
-app.factory('meals', function($http) {
+app.factory('meals', function($http, $location) {
   return {
-    url: window.location.href + 'meals/',
+    url: $location.absUrl() + '/meals',
     list: [],
     getAll: function() {
       var _this = this;

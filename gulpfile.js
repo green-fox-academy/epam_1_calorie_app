@@ -6,6 +6,7 @@ var stylish = require('jshint-stylish');
 var watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var jasmine = require('gulp-jasmine');
+var Server = require('karma').Server;
 
 gulp.task('default', function() {
   console.log('Watching for file changes...');
@@ -26,4 +27,11 @@ gulp.task('lint', function() {
 gulp.task('test', function () {
 	return gulp.src('spec/*.js')
 		.pipe(jasmine());
+});
+
+gulp.task('frontendTest', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });

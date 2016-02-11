@@ -12,7 +12,7 @@ module.exports = function(config) {
       'node_modules/angular/angular.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'public/js/*.js',
-      'spec/*.js'
+      'spec/scriptSpec.js'
     ],
     // list of files to exclude
     exclude: [
@@ -36,7 +36,7 @@ module.exports = function(config) {
     autoWatch: false,
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS', 'PhantomJS_custom'],
+    browsers: ['PhantomJS'],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,

@@ -13,6 +13,7 @@
     "sql-template-strings": "^1.1.2"
   },
   "devDependencies": {
+    "angular": "^1.5.0",
     "angular-mocks": "^1.5.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",

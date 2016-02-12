@@ -1,7 +1,6 @@
 'use strict';
 
-
-describe('test http requests', function() {
+describe('test meals factory', function() {
 
   beforeEach(module('CalorieApp'));
 
@@ -22,14 +21,14 @@ describe('test http requests', function() {
   });
 
   it('should have a empty list', function() {
-    expect(meals.list.length).toBe(0);
+    expect(meals.getAll().length).toBe(0);
   });
 
   it('should return the list', function() {
     $httpBackend.expectGET($location.absUrl() + 'meals/');
-    meals.getAll();
+    meals.fetchAll();
     $httpBackend.flush();
-    expect(meals.list).toEqual([{}]);
+    expect(meals.getAll()).toEqual([{}]);
   });
 
   it('the list shouldn\'t be empty after add', function() {
@@ -43,7 +42,7 @@ describe('test http requests', function() {
     $httpBackend.expectPOST($location.absUrl() + 'meals/', meal);
     meals.addItem(meal);
     $httpBackend.flush();
-    expect(meals.list.length).toBe(1);
+    expect(meals.getAll().length).toBe(1);
   });
 
   it('the list should be empty after add and delete', function() {
@@ -57,11 +56,11 @@ describe('test http requests', function() {
     $httpBackend.expectPOST($location.absUrl() + 'meals/', meal);
     meals.addItem(meal);
     $httpBackend.flush();
-    expect(meals.list.length).toBe(1);
+    expect(meals.getAll().length).toBe(1);
 
     $httpBackend.expectDELETE($location.absUrl() + 'meals/'+ meal.id);
     meals.deleteItem(meal);
     $httpBackend.flush();
-    expect(meals.list.length).toBe(0);
+    expect(meals.getAll().length).toBe(0);
   });
 });

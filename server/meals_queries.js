@@ -8,19 +8,23 @@ function Meals(connection) {
   };
 
   this.addItem = function (params, callback) {
-    connection.sendQuery(SQL`
+    connection.sendQuery(
+      SQL`
       INSERT INTO meals (name, calories, date)
       VALUES (${params.name}, ${params.calories}, ${params.date})
       RETURNING id, name, calories, date`,
-      callback);
-    };
+      callback
+    );
+  };
 
   this.deleteItem = function (id, callback) {
-    connection.sendQuery(SQL`
+    connection.sendQuery(
+      SQL`
       DELETE FROM meals WHERE id = ${id}
       RETURNING id, name, calories, date`,
-      callback);
-    };
+      callback
+    );
+  };
 }
 
 module.exports = Meals;

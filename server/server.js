@@ -6,7 +6,6 @@ var MealsQueries = require('./meals_queries.js');
 var Controller = require('./controller.js');
 var path = require('path');
 
-
 function createServer(connection) {
 	var queries = new MealsQueries(connection);
 	var controller = new Controller(queries);

@@ -23,7 +23,7 @@ describe('Controller', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(res.body).toEqual([{}]);
+            expect(res.body).toEqual( [{}] );
             done();
           }
         });
@@ -42,7 +42,7 @@ describe('Controller', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(res.body).toEqual([{}]);
+            expect(res.body).toEqual( [{}] );
             done();
           }
         });
@@ -60,7 +60,7 @@ describe('Controller', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(res.body).toEqual([{}]);
+            expect(res.body).toEqual( [{}] );
             done();
           }
         });

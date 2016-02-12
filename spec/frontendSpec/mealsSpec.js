@@ -58,7 +58,7 @@ describe('test meals factory', function() {
     $httpBackend.flush();
     expect(meals.getAll().length).toBe(1);
 
-    $httpBackend.expectDELETE($location.absUrl() + 'meals/'+ meal.id);
+    $httpBackend.expectDELETE($location.absUrl() + 'meals/' + 1);
     meals.deleteItem(meal);
     $httpBackend.flush();
     expect(meals.getAll().length).toBe(0);

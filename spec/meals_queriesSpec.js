@@ -3,23 +3,25 @@
 var SQL = require('sql-template-strings');
 
 describe('Meals', function() {
-    var connection = {};
-    var Meals = require('../server/meals_queries');
-    var meals = new Meals(connection);
-    var callback;
+  var connection = {};
+  var Meals = require('../server/meals_queries');
+  var meals = new Meals(connection);
+  var callback;
 
   beforeEach(function() {
+    callback = function(){};
     connection.sendQuery = function (query, callback) {
       return callback(null, [{}]);
     };
-    callback = function(){};
     spyOn(connection, 'sendQuery').and.callThrough();
   });
 
   describe('getAll()', function() {
     it('tracks all the arguments of its calls', function() {
       meals.getAll(callback);
-      expect(connection.sendQuery).toHaveBeenCalledWith('SELECT id, name, calories, date FROM meals', callback);
+      expect(connection.sendQuery).toHaveBeenCalledWith(
+        'SELECT id, name, calories, date FROM meals', callback
+      );
     });
   });
 
@@ -35,9 +37,9 @@ describe('Meals', function() {
     });
   });
 
-  describe('deletItem()', function() {
+  describe('deleteItem()', function() {
     it('tracks all the arguments of its calls', function() {
-      var id = '';
+      var id = 1;
       meals.deleteItem(id, callback);
       expect(connection.sendQuery).toHaveBeenCalledWith(SQL`
       DELETE FROM meals WHERE id = ${id}

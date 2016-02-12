@@ -39,7 +39,7 @@ app.factory('meals', function($http, $location) {
 
 app.controller('AddCtrl', function($scope, meals) {
   $scope.meal = 'add meal';
-  $scope.calorie = {value : 0} ;
+  $scope.calorie = {value : 0};
   $scope.date = {value: new Date()};
 
   $scope.addMeal = function() {

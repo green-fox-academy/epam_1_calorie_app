@@ -22,10 +22,9 @@ function Controller(queries) {
 
   this.handleResponse = function (err, result, response) {
     if (err) {
-      console.error(err);
-      response.send('Error ' + err);
+      response.status(500).json({'Error:': err});
     }	else {
-      response.json(result.rows);
+      response.status(200).json(result.rows);
     }
   };
 }

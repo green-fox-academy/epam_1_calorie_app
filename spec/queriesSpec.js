@@ -4,7 +4,7 @@ var SQL = require('sql-template-strings');
 
 describe('Meals', function() {
     var connection = {};
-    var Meals = require('../server/queries');
+    var Meals = require('../server/meals_queries');
     var meals = new Meals(connection);
 
   beforeEach(function() {

@@ -1,7 +1,6 @@
 'use strict';
 
-describe('Service', function() {
-  var _ = require('underscore');
+describe('Controller', function() {
   var request = require('supertest');
   var createServer = require('../server/server');
   var app;
@@ -24,7 +23,7 @@ describe('Service', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(_.isEqual(res.body, [{}])).toBeTruthy;
+            expect(res.body).toEqual([{}]);
             done();
           }
         });
@@ -43,7 +42,7 @@ describe('Service', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(_.isEqual(res.body, [{}])).toBeTruthy;
+            expect(res.body).toEqual([{}]);
             done();
           }
         });
@@ -61,7 +60,7 @@ describe('Service', function() {
           if (err) {
             done.fail(err);
           } else {
-            expect(_.isEqual(res.body, [{}])).toBeTruthy;
+            expect(res.body).toEqual([{}]);
             done();
           }
         });
